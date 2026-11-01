@@ -1,5 +1,5 @@
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://DOMINIO.com.br"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://citizencidadania.com.br"
 ).replace(/\/$/, "");
 
 export const COMPANY = {
