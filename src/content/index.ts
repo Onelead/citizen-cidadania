@@ -1,5 +1,7 @@
 import type { ServiceSlug } from "@/data/services";
+import { regions } from "@/data/cities";
 import type { ServicePageContent } from "./types";
+import { generators } from "./generated";
 import cidadaniaPortuguesaSorocaba from "./cidadania-portuguesa/sorocaba";
 import aireSorocaba from "./aire/sorocaba";
 import passaporteItalianoSorocaba from "./passaporte-italiano/sorocaba";
@@ -8,8 +10,8 @@ import cidadaniaEspanholaSorocaba from "./cidadania-espanhola/sorocaba";
 import cidadaniaAlemaSorocaba from "./cidadania-alema/sorocaba";
 import cidadaniaPortuguesaCampinas from "./cidadania-portuguesa/campinas";
 
-// Para publicar uma nova página: criar o arquivo de conteúdo e registrar aqui.
-export const pages: ServicePageContent[] = [
+// Páginas escritas uma a uma. Têm prioridade sobre as geradas.
+const handwritten: ServicePageContent[] = [
   cidadaniaPortuguesaSorocaba,
   aireSorocaba,
   passaporteItalianoSorocaba,
@@ -18,6 +20,37 @@ export const pages: ServicePageContent[] = [
   cidadaniaAlemaSorocaba,
   cidadaniaPortuguesaCampinas,
 ];
+
+// Demais combinações serviço + cidade: montadas a partir de variações
+// escritas à mão em src/content/generated/, escolhidas por cidade.
+const generated: ServicePageContent[] = (
+  Object.keys(generators) as ServiceSlug[]
+).flatMap((service) =>
+  regions.flatMap((region) =>
+    region.cities
+      .filter(
+        (city) =>
+          !handwritten.some((p) => p.service === service && p.city === city.slug),
+      )
+      .map((city) => generators[service](city, region)),
+  ),
+);
+
+const serviceOrder: ServiceSlug[] = [
+  "cidadania-portuguesa",
+  "cidadania-espanhola",
+  "cidadania-alema",
+  "passaporte-italiano",
+  "passaporte-americano",
+  "aire",
+];
+const cityOrder = regions.flatMap((r) => r.cities.map((c) => c.slug));
+
+export const pages: ServicePageContent[] = [...handwritten, ...generated].sort(
+  (a, b) =>
+    serviceOrder.indexOf(a.service) - serviceOrder.indexOf(b.service) ||
+    cityOrder.indexOf(a.city) - cityOrder.indexOf(b.city),
+);
 
 export function getPage(
   service: string,
@@ -35,7 +68,7 @@ export function pagesByCity(city: string): ServicePageContent[] {
 }
 
 export function publishedServices(): ServiceSlug[] {
-  return [...new Set(pages.map((p) => p.service))];
+  return serviceOrder.filter((s) => pages.some((p) => p.service === s));
 }
 
 export function pagePath(p: Pick<ServicePageContent, "service" | "city">) {

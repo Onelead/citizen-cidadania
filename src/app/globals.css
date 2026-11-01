@@ -128,6 +128,7 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 /* Seções */
 .section { padding-block: var(--sec); }
 .section--top-0 { padding-top: 0; }
+.section--hub + .section--hub { padding-top: 0; }
 .section--tint { background: var(--c-card); }
 .section--dark { background: var(--c-black); color: var(--c-on-dark); }
 .section--dark .eyebrow { color: var(--c-on-dark-muted); }

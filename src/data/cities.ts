@@ -4,8 +4,7 @@ export type City = { slug: CitySlug; name: string };
 
 export type Region = { slug: string; name: string; cities: City[] };
 
-// Catálogo para expansão. Uma cidade só ganha página quando existir um arquivo
-// de conteúdo em src/content/<serviço>/<cidade>.ts registrado em src/content/index.ts.
+// Catálogo de cidades atendidas pelas páginas locais, agrupadas por região.
 export const regions: Region[] = [
   {
     slug: "sorocaba",
@@ -66,4 +65,8 @@ export const cities: City[] = regions.flatMap((r) => r.cities);
 
 export function getCity(slug: string): City | undefined {
   return cities.find((c) => c.slug === slug);
+}
+
+export function getRegionOf(citySlug: string): Region {
+  return regions.find((r) => r.cities.some((c) => c.slug === citySlug))!;
 }

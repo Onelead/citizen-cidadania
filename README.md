@@ -20,8 +20,10 @@ Antes de publicar, preencha `NEXT_PUBLIC_SITE_URL` em `.env.local` com o domíni
 - `src/content/index.ts`: registro. Uma página só existe (e entra no sitemap) se estiver aqui. O resto devolve 404.
 - Todos os CTAs abrem o WhatsApp `5511991499258` com "Olá! Quero fazer o serviço de <Serviço> em <Cidade>."
 
-## Nova página
+## Páginas
 
-1. Copiar `src/content/cidadania-portuguesa/sorocaba.ts` como ponto de partida e reescrever o conteúdo de verdade, sem só trocar a cidade.
-2. Registrar em `src/content/index.ts`.
-3. Atualizar `updated` somente quando o conteúdo mudar de verdade.
+- **210 páginas**: 6 serviços × 35 cidades (regiões de Sorocaba, Campinas e Jundiaí, em `src/data/cities.ts`).
+- **Escritas à mão** (`src/content/<serviço>/<cidade>.ts`): os 6 serviços de Sorocaba e Cidadania Portuguesa em Campinas.
+- **Geradas** (`src/content/generated/`): replicam a página de Sorocaba do serviço trocando a cidade nos textos e links. A meta description, a chamada do hero e o título da chamada final alternam entre versões escritas à mão (`variants.ts`), então nenhuma cidade repete a meta de outra.
+- Para dar texto próprio a uma cidade, crie `src/content/<serviço>/<cidade>.ts` e registre em `handwritten` (`src/content/index.ts`). A página escrita substitui a gerada.
+- Atualize `updated` somente quando o conteúdo mudar de verdade.

@@ -3,9 +3,8 @@ import Link from "next/link";
 import logo from "../../public/logo.png";
 import { COMPANY, whatsappUrl } from "@/lib/site";
 import { services } from "@/data/services";
-import { getCity } from "@/data/cities";
 import type { Photo } from "@/data/photos";
-import { pages, pagePath } from "@/content";
+import { publishedServices } from "@/content";
 
 export function SiteFooter({
   message,
@@ -34,11 +33,9 @@ export function SiteFooter({
           <nav aria-label="Páginas de serviço">
             <p className="site-footer__title">Serviços</p>
             <ul>
-              {pages.map((p) => (
-                <li key={pagePath(p)}>
-                  <Link href={pagePath(p)}>
-                    {services[p.service].pageName} em {getCity(p.city)?.name}
-                  </Link>
+              {publishedServices().map((slug) => (
+                <li key={slug}>
+                  <Link href={`/${slug}/`}>{services[slug].pageName}</Link>
                 </li>
               ))}
             </ul>

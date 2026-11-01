@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ServicePageContent } from "@/content/types";
 import { services } from "@/data/services";
-import { getCity } from "@/data/cities";
+import { getCity, getRegionOf } from "@/data/cities";
 import { photos } from "@/data/photos";
 import { pagePath, pagesByCity, pagesByService } from "@/content";
 import { COMPANY, SITE_URL, absoluteUrl } from "@/lib/site";
@@ -38,7 +38,10 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
   const docs = page.topics.find((t) => t.id === page.documents.topicId)!;
   const rest = page.topics.filter((t) => t !== intro && t !== docs);
 
-  const siblings = pagesByService(page.service).filter((p) => p.city !== page.city);
+  const region = getRegionOf(page.city);
+  const siblings = pagesByService(page.service).filter(
+    (p) => p.city !== page.city && region.cities.some((c) => c.slug === p.city),
+  );
   const sameCity = pagesByCity(page.city).filter((p) => p.service !== page.service);
 
   const jsonLd = {
@@ -324,8 +327,10 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
           <section className="section section--top-0" aria-labelledby="outras-cidades-titulo">
             <div className="container">
               <header className="section-head">
-                <span className="eyebrow">Outras cidades</span>
-                <h2 id="outras-cidades-titulo">{service.pageName} em Outras Cidades</h2>
+                <span className="eyebrow">Cidades próximas</span>
+                <h2 id="outras-cidades-titulo">
+                  {service.pageName} na {region.name}
+                </h2>
               </header>
               <ul className="link-cards">
                 {siblings.map((p) => (
@@ -336,6 +341,12 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link href={`/${page.service}/`}>
+                    Ver todas as cidades
+                    <ArrowIcon />
+                  </Link>
+                </li>
               </ul>
             </div>
           </section>

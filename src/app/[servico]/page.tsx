@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { pagePath, pagesByService, publishedServices } from "@/content";
 import { services, type ServiceSlug } from "@/data/services";
-import { getCity } from "@/data/cities";
+import { regions } from "@/data/cities";
 import { COMPANY } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowIcon } from "@/components/Icons";
@@ -79,24 +79,39 @@ export default async function Hub({ params }: PageProps<"/[servico]">) {
             </div>
           </div>
         </section>
-        <section className="section" aria-labelledby="cidades-titulo">
-          <div className="container">
-            <header className="section-head">
-              <span className="eyebrow">Cidades</span>
-              <h2 id="cidades-titulo">Escolha Sua Cidade</h2>
-            </header>
-            <ul className="link-cards">
-              {cityPages.map((p) => (
-                <li key={p.city}>
-                  <Link href={pagePath(p)}>
-                    {service.pageName} em {getCity(p.city)?.name}
-                    <ArrowIcon />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        {regions.map((region) => {
+          const list = cityPages.filter((p) =>
+            region.cities.some((c) => c.slug === p.city),
+          );
+          if (list.length === 0) return null;
+          return (
+            <section
+              key={region.slug}
+              className="section section--hub"
+              aria-labelledby={`regiao-${region.slug}`}
+            >
+              <div className="container">
+                <header className="section-head">
+                  <span className="eyebrow">Cidades</span>
+                  <h2 id={`regiao-${region.slug}`}>{region.name}</h2>
+                </header>
+                <ul className="link-cards">
+                  {list.map((p) => {
+                    const city = region.cities.find((c) => c.slug === p.city)!;
+                    return (
+                      <li key={p.city}>
+                        <Link href={pagePath(p)}>
+                          {service.pageName} em {city.name}
+                          <ArrowIcon />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+          );
+        })}
       </main>
       <SiteFooter message={message} photos={[image.photo]} />
       <WhatsAppFloat message={message} />

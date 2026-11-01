@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { pages, pagePath } from "@/content";
+import { publishedServices } from "@/content";
 import { services } from "@/data/services";
-import { getCity } from "@/data/cities";
 import { photos } from "@/data/photos";
 import { COMPANY, SITE_URL } from "@/lib/site";
 import { ArrowIcon } from "@/components/Icons";
@@ -74,10 +73,10 @@ export default function Home() {
               <h2 id="servicos-titulo">Escolha o Serviço</h2>
             </header>
             <ul className="link-cards">
-              {pages.map((p) => (
-                <li key={pagePath(p)}>
-                  <Link href={pagePath(p)}>
-                    {services[p.service].pageName} em {getCity(p.city)?.name}
+              {publishedServices().map((slug) => (
+                <li key={slug}>
+                  <Link href={`/${slug}/`}>
+                    {services[slug].pageName}
                     <ArrowIcon />
                   </Link>
                 </li>
