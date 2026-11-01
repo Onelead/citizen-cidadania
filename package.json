@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/fix-og-ext.mjs",
+    "build": "next build && node scripts/fix-og-ext.mjs && node scripts/strip-next-runtime.mjs",
     "start": "next start",
     "lint": "eslint"
   },

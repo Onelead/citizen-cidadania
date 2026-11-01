@@ -100,7 +100,16 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
             <div className="hero__copy">
               <Breadcrumbs items={crumbs} />
               <span className="eyebrow">{page.hero.eyebrow}</span>
-              <h1 id="titulo">{page.h1}</h1>
+              <h1 id="titulo">
+                {page.h1.endsWith(city.name) ? (
+                  <>
+                    {page.h1.slice(0, -city.name.length)}
+                    <span className="city-box">{city.name}</span>
+                  </>
+                ) : (
+                  page.h1
+                )}
+              </h1>
               <p className="hero__lead">{page.hero.lead}</p>
               <div className="actions">
                 <WhatsAppButton message={msg}>{page.hero.cta}</WhatsAppButton>

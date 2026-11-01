@@ -1,8 +1,6 @@
-"use client";
-
 import type { ReactNode } from "react";
 
-/** Abre o formulário de análise inicial na etapa indicada. */
+/** Abre o formulário de análise inicial na etapa indicada (via public/js/analysis.js). */
 export function OpenAnalysis({
   step = 0,
   className,
@@ -13,13 +11,7 @@ export function OpenAnalysis({
   children: ReactNode;
 }) {
   return (
-    <button
-      type="button"
-      className={className}
-      onClick={() =>
-        window.dispatchEvent(new CustomEvent("open-analysis", { detail: step }))
-      }
-    >
+    <button type="button" className={className} data-open-step={step}>
       {children}
     </button>
   );

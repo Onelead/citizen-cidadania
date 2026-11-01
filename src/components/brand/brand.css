@@ -6,7 +6,7 @@
   --bm-dark: #151515;          /* bloco preto */
   --bm-ink: #17181a;
   --bm-ink-2: #45494c;
-  --bm-muted: #6b7174;
+  --bm-muted: #565c5f;
   --bm-line: #e3e7e9;
   --bm-accent: #892725;        /* vinho do logo */
   --bm-accent-2: #a6332f;
@@ -42,6 +42,11 @@
 }
 .bm-display--md { font-size: clamp(2rem, 3.6vw + 0.6rem, 3.4rem); max-width: 18ch !important; }
 .bm-dot { color: var(--bm-accent); }
+.bm-city-box {
+  display: inline-block; padding: 0 0.18em 0.04em; border-radius: 0.14em;
+  background: var(--bm-accent); color: var(--bm-on-accent); line-height: 1.05;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
 .bm-h3 { font-size: clamp(1.25rem, 1vw + 1rem, 1.6rem); line-height: 1.2; letter-spacing: -0.03em !important; }
 .bm-lead { max-width: 56ch; margin: 22px auto 0; font-size: 1.0625rem; line-height: 1.6; color: var(--bm-ink-2); text-wrap: pretty; }
 .bm-note { margin-top: 18px; font-size: 0.8125rem; color: var(--bm-muted); }
@@ -183,6 +188,21 @@ span.bm-sheet__icon { background: none; }
 .bm-summary strong { text-align: right; }
 .bm-sheet__actions { display: grid; justify-items: center; gap: 12px; padding: 22px 18px 26px; }
 .bm-sheet__privacy { font-size: 0.75rem; color: var(--bm-muted); text-align: center; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bm-facts li, .bm-section .bm-eyebrow, .bm-section .bm-display, .bm-section .bm-lead, .bm-card--wide,
+    .bm-why li, .bm-faq details, .bm-cities ul, .bm-closing .bm-cta {
+      animation: bm-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+@keyframes bm-reveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
 
 @media (max-width: 760px) {
   .bm-facts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; }

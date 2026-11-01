@@ -14,7 +14,7 @@ import {
 import { COMPANY, SITE_URL, absoluteUrl, whatsappUrl } from "@/lib/site";
 import { JsonLd } from "../JsonLd";
 import { WhatsAppFloat } from "../WhatsAppFloat";
-import { AnalysisForm } from "./AnalysisForm";
+import { AnalysisDialog } from "./AnalysisDialog";
 import { OpenAnalysis } from "./OpenAnalysis";
 import "./brand.css";
 
@@ -136,7 +136,7 @@ export function BrandPage({ city, region }: { city: City; region: Region }) {
           </nav>
           <Eyebrow lines={c.heroEyebrow} />
           <h1 id="bm-titulo" className="bm-display">
-            {h1}
+            {BRAND_NAME} em <span className="bm-city-box">{city.name}</span>
             <span className="bm-dot">.</span>
           </h1>
           <p className="bm-lead">{v.lead}</p>
@@ -367,7 +367,7 @@ export function BrandPage({ city, region }: { city: City; region: Region }) {
         </div>
       </footer>
 
-      <AnalysisForm city={city.name} message={msg} />
+      <AnalysisDialog city={city.name} message={msg} phone={COMPANY.telephone.replace("+", "")} />
       <WhatsAppFloat message={msg} />
       <JsonLd data={jsonLd} />
     </div>

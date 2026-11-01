@@ -292,6 +292,29 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .site-footer nav a:hover, .site-footer__phone:hover { color: #ffffff; }
 .wa-float { box-shadow: 0 0 0 2px var(--c-on-mist), 0 14px 30px -12px rgb(60 10 10 / 0.6); }
 
+/* Cidade numa caixa (título) */
+.city-box {
+  display: inline-block; padding: 0.02em 0.22em 0.06em; border-radius: 0.12em;
+  background: var(--c-on-mist); color: var(--c-mist); line-height: 1.1;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* Revelação ao rolar: só CSS, acompanha a rolagem (sem atraso). Sem suporte, tudo aparece normal. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section-head, .split__copy, .split .media, .step, .docbar, .prose--note, .country__copy, .country__map,
+    .card, .about > *, .panel, .why li, .faq-wrap__head, .faq details, .link-cards li, .final__photo, .final__copy {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* WhatsApp flutuante */
 .wa-float {
   position: fixed; z-index: 50; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
