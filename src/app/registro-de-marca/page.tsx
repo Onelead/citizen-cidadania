@@ -6,7 +6,6 @@ import { COMPANY } from "@/lib/site";
 import { ArrowIcon } from "@/components/Icons";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
@@ -38,12 +37,6 @@ export default function BrandHub() {
       <main id="conteudo">
         <section className="hero" aria-labelledby="titulo">
           <div className="container" style={{ paddingBlock: "8px 72px" }}>
-            <Breadcrumbs
-              items={[
-                { name: "Início", href: "/" },
-                { name: BRAND_NAME, href: `/${BRAND_SLUG}/` },
-              ]}
-            />
             <span className="eyebrow">Atendimento por cidade</span>
             <h1 id="titulo">{BRAND_NAME}</h1>
             <p className="hero__lead" style={{ marginTop: 20 }}>

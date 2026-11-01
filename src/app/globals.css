@@ -49,12 +49,13 @@ a { color: inherit; }
 :focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
 ::selection { background: color-mix(in oklab, var(--c-accent) 22%, transparent); }
 
-h1, h2, h3 { margin: 0; overflow-wrap: break-word; min-width: 0; text-wrap: balance; hyphens: auto; -webkit-hyphens: auto; }
+h1, h2, h3 { margin: 0; min-width: 0; text-wrap: balance; hyphens: manual; -webkit-hyphens: manual; overflow-wrap: normal; word-break: normal; }
 h1, h2, .display {
   font-family: var(--f-display); font-weight: 500; text-transform: uppercase;
   letter-spacing: 0.01em; line-height: 1.22;
 }
-h1 { font-size: clamp(1.75rem, 2.6vw + 0.9rem, 2.85rem); max-width: 18ch; }
+/* No celular o título encolhe com a tela para a palavra mais longa (ex.: ATUALIZAÇÃO) caber inteira. */
+h1 { font-size: min(clamp(1.75rem, 2.6vw + 0.9rem, 2.85rem), 7.6vw); max-width: 18ch; }
 h2, .display { font-size: clamp(1.25rem, 1.3vw + 0.85rem, 1.85rem); max-width: 26ch; }
 h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 
@@ -114,11 +115,6 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .hero .media__block { inset: 18% 0 0 14%; border-radius: var(--r-lg) var(--r-lg) 0 0; }
 .hero .media__frame { inset: 0 9% 9% 0; }
 
-.crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 40px; padding: 0; list-style: none; font: 500 0.8125rem/1.4 var(--f-body); color: var(--c-muted); }
-.crumbs li + li::before { content: "/"; margin-right: 6px; opacity: 0.6; }
-.crumbs a { text-decoration: none; }
-.crumbs a:hover { color: var(--c-accent); text-decoration: underline; }
-.crumbs [aria-current] { color: var(--c-ink); }
 
 /* Foto sobre bloco */
 .media { position: relative; width: 100%; aspect-ratio: 1 / 0.82; }
@@ -278,9 +274,6 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .site-nav a, .header-contact__phone { color: var(--c-on-mist); }
 .site-nav a:hover, .header-contact:hover .header-contact__hint { color: #ffffff; }
 .header-contact__hint, .hero .eyebrow, .final .eyebrow { color: var(--c-on-mist-muted); }
-.crumbs ol { color: var(--c-on-mist-muted); }
-.crumbs [aria-current] { color: var(--c-on-mist); }
-.crumbs a:hover { color: #ffffff; }
 .hero__lead, .final__copy p { color: var(--c-on-mist-muted); }
 .hero .btn, .final .btn, .site-header .btn { background: var(--c-on-mist); color: var(--c-mist); }
 .hero .btn:hover, .final .btn:hover, .site-header .btn:hover { background: #ffffff; }
@@ -295,7 +288,7 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 
 /* Cidade numa caixa (título) */
 .city-box {
-  display: inline-block; padding: 0.02em 0.22em 0.06em; border-radius: 0.12em;
+  display: inline; padding: 0.02em 0.22em 0.06em; border-radius: 0.12em;
   background: var(--c-on-mist); color: var(--c-mist); line-height: 1.1;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
@@ -362,7 +355,6 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
   .header-cta { display: inline-flex; margin-left: auto; }
   .brand__name { display: none; }
   .site-header__inner { min-height: 64px; }
-  .crumbs ol { margin-bottom: 24px; }
   .hero__copy { padding-top: 20px; }
   .actions .btn { flex: 1 1 100%; }
   .tiles { grid-template-columns: minmax(0, 1fr); }
@@ -371,9 +363,6 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
   .card { padding: 24px 20px; }
   .site-footer__grid { grid-template-columns: minmax(0, 1fr); }
   .wa-float { width: 56px; height: 56px; }
-}
-@media (max-width: 380px) {
-  h1 { font-size: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -21,7 +21,7 @@
 }
 .bm h1, .bm h2, .bm h3 {
   font-family: var(--bm-font); text-transform: none; letter-spacing: -0.02em;
-  font-weight: 700; max-width: none; margin: 0;
+  font-weight: 700; max-width: none; margin: 0; hyphens: manual; overflow-wrap: normal;
 }
 
 .bm-shell { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); text-align: center; }
@@ -29,11 +29,6 @@
 .bm-header { display: grid; place-items: center; padding: 28px 16px 8px; }
 .bm-logo img { width: auto; height: 44px; }
 
-.bm-crumbs ol { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 0 28px; padding: 0; list-style: none; font-size: 0.8125rem; color: var(--bm-muted); }
-.bm-crumbs li + li::before { content: "/"; margin-right: 6px; opacity: 0.6; }
-.bm-crumbs a { text-decoration: none; }
-.bm-crumbs a:hover { color: var(--bm-accent); }
-.bm-crumbs [aria-current] { color: var(--bm-ink); }
 
 .bm-eyebrow { display: grid; gap: 2px; margin: 0 0 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bm-accent); }
 .bm-display {
@@ -43,7 +38,7 @@
 .bm-display--md { font-size: clamp(2rem, 3.6vw + 0.6rem, 3.4rem); max-width: 18ch !important; }
 .bm-dot { color: var(--bm-accent); }
 .bm-city-box {
-  display: inline-block; padding: 0 0.18em 0.04em; border-radius: 0.14em;
+  display: inline; padding: 0 0.18em 0.04em; border-radius: 0.14em;
   background: var(--bm-accent); color: var(--bm-on-accent); line-height: 1.05;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }

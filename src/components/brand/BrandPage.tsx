@@ -121,19 +121,6 @@ export function BrandPage({ city, region }: { city: City; region: Region }) {
       <main id="conteudo">
         {/* Hero */}
         <section className="bm-hero bm-shell" aria-labelledby="bm-titulo">
-          <nav aria-label="Navegação estrutural" className="bm-crumbs">
-            <ol>
-              {crumbs.map((cr, i) => (
-                <li key={cr.href}>
-                  {i === crumbs.length - 1 ? (
-                    <span aria-current="page">{cr.name}</span>
-                  ) : (
-                    <Link href={cr.href}>{cr.name}</Link>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
           <Eyebrow lines={c.heroEyebrow} />
           <h1 id="bm-titulo" className="bm-display">
             {BRAND_NAME} em <span className="bm-city-box">{city.name}</span>

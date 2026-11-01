@@ -5,7 +5,6 @@ import { getCity, getRegionOf } from "@/data/cities";
 import { photos } from "@/data/photos";
 import { pagePath, pagesByCity, pagesByService } from "@/content";
 import { COMPANY, SITE_URL, absoluteUrl } from "@/lib/site";
-import { Breadcrumbs } from "./Breadcrumbs";
 import { CountryMap } from "./CountryMap";
 import { ArrowIcon, CheckIcon, DocIcon } from "./Icons";
 import { JsonLd } from "./JsonLd";
@@ -98,7 +97,6 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
         <section className="hero" aria-labelledby="titulo">
           <div className="container hero__grid">
             <div className="hero__copy">
-              <Breadcrumbs items={crumbs} />
               <span className="eyebrow">{page.hero.eyebrow}</span>
               <h1 id="titulo">
                 {page.h1.endsWith(city.name) ? (

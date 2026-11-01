@@ -5,7 +5,6 @@ import { pagePath, pagesByService, publishedServices } from "@/content";
 import { services, type ServiceSlug } from "@/data/services";
 import { regions } from "@/data/cities";
 import { COMPANY } from "@/lib/site";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowIcon } from "@/components/Icons";
 import { Media } from "@/components/Media";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -61,12 +60,6 @@ export default async function Hub({ params }: PageProps<"/[servico]">) {
         <section className="hero" aria-labelledby="titulo">
           <div className="container hero__grid">
             <div className="hero__copy">
-              <Breadcrumbs
-                items={[
-                  { name: "Início", href: "/" },
-                  { name: service.name, href: `/${service.slug}/` },
-                ]}
-              />
               <span className="eyebrow">Atendimento por cidade</span>
               <h1 id="titulo">{service.name}</h1>
               <p className="hero__lead">{service.hubIntro}</p>
