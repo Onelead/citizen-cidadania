@@ -21,6 +21,8 @@
   --c-accent: #892725;      /* vinho do logo */
   --c-accent-2: #a2302d;
   --c-accent-ink: #f6f2f1;
+  --c-whatsapp: #25d366;    /* verde oficial do WhatsApp (botão flutuante) */
+  --c-whatsapp-2: #1ebe5d;
 
   --f-display: var(--font-display), "Arial Black", system-ui, sans-serif;
   --f-body: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -290,7 +292,6 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .site-footer__brand p, .site-footer__hint, .site-footer__bottom { color: var(--c-on-mist-muted); }
 .site-footer__title, .site-footer__phone { color: var(--c-on-mist); }
 .site-footer nav a:hover, .site-footer__phone:hover { color: #ffffff; }
-.wa-float { box-shadow: 0 0 0 2px var(--c-on-mist), 0 14px 30px -12px rgb(60 10 10 / 0.6); }
 
 /* Cidade numa caixa (título) */
 .city-box {
@@ -318,12 +319,16 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 /* WhatsApp flutuante */
 .wa-float {
   position: fixed; z-index: 50; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
-  display: inline-flex; align-items: center; gap: 8px; min-height: 54px; padding: 0 22px 0 18px;
-  border-radius: var(--r-pill); background: var(--c-accent); color: var(--c-accent-ink);
-  font: 600 0.9375rem/1 var(--f-body); text-decoration: none; box-shadow: 0 14px 30px -12px rgb(60 10 10 / 0.6);
-  transition: background-color var(--dur) var(--ease), transform 120ms var(--ease);
+  display: grid; place-items: center; width: 60px; height: 60px; padding: 0;
+  border-radius: 50%; background: var(--c-whatsapp); color: #ffffff; text-decoration: none;
+  box-shadow: 0 0 0 3px rgb(255 255 255 / 0.9), 0 12px 28px -10px rgb(0 0 0 / 0.45);
+  transition: background-color var(--dur) var(--ease), transform 160ms var(--ease);
 }
-.wa-float:hover { background: var(--c-accent-2); }
+.wa-float svg { width: 30px; height: 30px; }
+.wa-float:hover { background: var(--c-whatsapp-2); transform: scale(1.05); }
+.wa-float:focus-visible { outline: 3px solid var(--c-whatsapp-2); outline-offset: 4px; }
+/* O nome fica só para leitores de tela: o ícone já identifica o WhatsApp. */
+.wa-float__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wa-float:active { transform: translateY(1px); }
 
 /* 404 */
@@ -365,8 +370,7 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
   .docbar { padding: 24px 20px; }
   .card { padding: 24px 20px; }
   .site-footer__grid { grid-template-columns: minmax(0, 1fr); }
-  .wa-float { padding: 0 16px; min-height: 56px; }
-  .wa-float__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .wa-float { width: 56px; height: 56px; }
 }
 @media (max-width: 380px) {
   h1 { font-size: 1.5rem; }
