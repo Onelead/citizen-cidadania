@@ -110,11 +110,21 @@ export default function Home() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "Organization",
-          name: COMPANY.name,
-          url: SITE_URL,
-          logo: `${SITE_URL}/logo.png`,
-          telephone: COMPANY.telephone,
+          "@graph": [
+            {
+              "@type": "WebSite",
+              name: COMPANY.name,
+              url: `${SITE_URL}/`,
+              inLanguage: "pt-BR",
+            },
+            {
+              "@type": "Organization",
+              name: COMPANY.name,
+              url: SITE_URL,
+              logo: `${SITE_URL}/icon.png`,
+              telephone: COMPANY.telephone,
+            },
+          ],
         }}
       />
     </>
