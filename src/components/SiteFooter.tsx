@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo.png";
+import logo from "../../public/logo-light.png";
 import { COMPANY, whatsappUrl } from "@/lib/site";
 import { services } from "@/data/services";
 import type { Photo } from "@/data/photos";

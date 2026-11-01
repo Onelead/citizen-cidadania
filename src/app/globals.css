@@ -6,7 +6,10 @@
   --c-bg: #f2f4f5;          /* fundo da página: off-white, nunca branco puro */
   --c-card: #e2e7e9;        /* cards */
   --c-card-2: #d9e0e3;      /* painéis */
-  --c-mist: #d6dfe3;        /* hero, chamada final e rodapé */
+  --c-mist: #852624;        /* hero, chamada final e rodapé (vinho) */
+  --c-on-mist: #f6f0ef;
+  --c-on-mist-muted: #e2c9c7;
+  --c-on-mist-line: rgb(255 255 255 / 0.18);
   --c-ink: #1b1c1d;
   --c-ink-2: #3a3d3f;
   --c-muted: #5d6366;
@@ -266,6 +269,28 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .site-footer__hint { margin-top: 6px; color: var(--c-muted); }
 .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 36px; font-size: 0.75rem; color: var(--c-muted); }
 .site-footer__bottom a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Áreas em vinho: textos, botões e bloco das fotos ajustados para contraste */
+.site-header, .hero, .final, .site-footer { color: var(--c-on-mist); }
+.site-header .brand, .site-header .brand__name, .site-footer .brand { color: var(--c-on-mist); }
+.site-nav a, .header-contact__phone { color: var(--c-on-mist); }
+.site-nav a:hover, .header-contact:hover .header-contact__hint { color: #ffffff; }
+.header-contact__hint, .hero .eyebrow, .final .eyebrow { color: var(--c-on-mist-muted); }
+.crumbs ol { color: var(--c-on-mist-muted); }
+.crumbs [aria-current] { color: var(--c-on-mist); }
+.crumbs a:hover { color: #ffffff; }
+.hero__lead, .final__copy p { color: var(--c-on-mist-muted); }
+.hero .btn, .final .btn, .site-header .btn { background: var(--c-on-mist); color: var(--c-mist); }
+.hero .btn:hover, .final .btn:hover, .site-header .btn:hover { background: #ffffff; }
+.hero .btn--outline, .final .btn--outline { background: transparent; color: var(--c-on-mist); border-color: var(--c-on-mist); }
+.hero .btn--outline:hover, .final .btn--outline:hover { background: var(--c-on-mist); color: var(--c-mist); }
+.hero .media__block, .final .media__block { background: var(--c-black); }
+.site-header :focus-visible, .hero :focus-visible, .final :focus-visible, .site-footer :focus-visible { outline-color: var(--c-on-mist); }
+.site-footer > .container { border-top-color: var(--c-on-mist-line); }
+.site-footer__brand p, .site-footer__hint, .site-footer__bottom { color: var(--c-on-mist-muted); }
+.site-footer__title, .site-footer__phone { color: var(--c-on-mist); }
+.site-footer nav a:hover, .site-footer__phone:hover { color: #ffffff; }
+.wa-float { box-shadow: 0 0 0 2px var(--c-on-mist), 0 14px 30px -12px rgb(60 10 10 / 0.6); }
 
 /* WhatsApp flutuante */
 .wa-float {
