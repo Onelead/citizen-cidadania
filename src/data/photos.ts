@@ -99,4 +99,11 @@ export const photos = {
     author: "Maheshkumar Painam",
     url: "https://unsplash.com/photos/HF-lFqdOMF8",
   },
+  fachadaBandeirasPortugalUe: {
+    src: "/images/fachada-bandeiras-portugal-ue.jpg",
+    width: 1800,
+    height: 2700,
+    author: "Eduard Pretsi",
+    url: "https://unsplash.com/photos/0v4zAgGQmQw",
+  },
 } satisfies Record<string, Photo>;

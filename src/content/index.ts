@@ -6,6 +6,7 @@ import passaporteItalianoSorocaba from "./passaporte-italiano/sorocaba";
 import passaporteAmericanoSorocaba from "./passaporte-americano/sorocaba";
 import cidadaniaEspanholaSorocaba from "./cidadania-espanhola/sorocaba";
 import cidadaniaAlemaSorocaba from "./cidadania-alema/sorocaba";
+import cidadaniaPortuguesaCampinas from "./cidadania-portuguesa/campinas";
 
 // Para publicar uma nova página: criar o arquivo de conteúdo e registrar aqui.
 export const pages: ServicePageContent[] = [
@@ -15,6 +16,7 @@ export const pages: ServicePageContent[] = [
   passaporteAmericanoSorocaba,
   cidadaniaEspanholaSorocaba,
   cidadaniaAlemaSorocaba,
+  cidadaniaPortuguesaCampinas,
 ];
 
 export function getPage(

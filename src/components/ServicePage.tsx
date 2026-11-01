@@ -299,12 +299,12 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
           </div>
         </section>
 
-        {(sameCity.length > 0 || siblings.length > 0) && (
-          <section className="section section--top-0" aria-labelledby="links-titulo">
+        {sameCity.length > 0 && (
+          <section className="section section--top-0" aria-labelledby="mesma-cidade-titulo">
             <div className="container">
               <header className="section-head">
                 <span className="eyebrow">Veja também</span>
-                <h2 id="links-titulo">Outros Serviços em {city.name}</h2>
+                <h2 id="mesma-cidade-titulo">Outros Serviços em {city.name}</h2>
               </header>
               <ul className="link-cards">
                 {sameCity.map((p) => (
@@ -315,6 +315,19 @@ export function ServicePage({ page }: { page: ServicePageContent }) {
                     </Link>
                   </li>
                 ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {siblings.length > 0 && (
+          <section className="section section--top-0" aria-labelledby="outras-cidades-titulo">
+            <div className="container">
+              <header className="section-head">
+                <span className="eyebrow">Outras cidades</span>
+                <h2 id="outras-cidades-titulo">{service.pageName} em Outras Cidades</h2>
+              </header>
+              <ul className="link-cards">
                 {siblings.map((p) => (
                   <li key={pagePath(p)}>
                     <Link href={pagePath(p)}>
