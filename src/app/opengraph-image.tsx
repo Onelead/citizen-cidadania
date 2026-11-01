@@ -7,3 +7,5 @@ export const alt = "Citizen Cidadania";
 export default function Image() {
   return ogImage("Cidadania e documentação internacional");
 }
+
+export const dynamic = "force-static";
