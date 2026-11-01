@@ -38,6 +38,9 @@ export function SiteFooter({
                   <Link href={`/${slug}/`}>{services[slug].pageName}</Link>
                 </li>
               ))}
+              <li>
+                <Link href="/registro-de-marca/">Registro de Marca</Link>
+              </li>
             </ul>
           </nav>
           <div>

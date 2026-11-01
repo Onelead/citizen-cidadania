@@ -81,6 +81,12 @@ export default function Home() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/registro-de-marca/">
+                  Registro de Marca
+                  <ArrowIcon />
+                </Link>
+              </li>
             </ul>
           </div>
         </section>

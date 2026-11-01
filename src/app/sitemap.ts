@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { pages, pagePath, pagesByService, publishedServices } from "@/content";
 import { absoluteUrl } from "@/lib/site";
+import { cities } from "@/data/cities";
+import { BRAND_SLUG, BRAND_UPDATED } from "@/content/brand";
 
 // Apenas URLs indexáveis, canônicas e com HTTP 200.
 // lastModified vem da data "updated" de cada conteúdo, alterada só em mudança real.
@@ -17,6 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((p) => ({
       url: absoluteUrl(pagePath(p)),
       lastModified: p.updated,
+    })),
+    { url: absoluteUrl(`/${BRAND_SLUG}/`), lastModified: BRAND_UPDATED },
+    ...cities.map((c) => ({
+      url: absoluteUrl(`/${BRAND_SLUG}/${c.slug}/`),
+      lastModified: BRAND_UPDATED,
     })),
   ];
 }
