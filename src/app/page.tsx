@@ -1,69 +1,117 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { pages, pagePath } from "@/content";
+import { services } from "@/data/services";
+import { getCity } from "@/data/cities";
+import { photos } from "@/data/photos";
+import { COMPANY, SITE_URL } from "@/lib/site";
+import { ArrowIcon } from "@/components/Icons";
+import { JsonLd } from "@/components/JsonLd";
+import { Media } from "@/components/Media";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+
+const description =
+  "A Citizen Cidadania atua no suporte a pessoas e famílias que precisam organizar processos de cidadania e documentação internacional. Fale com a Citizen sobre seu caso.";
+const message = "Olá! Quero fazer um dos serviços da Citizen Cidadania.";
+
+export const metadata: Metadata = {
+  title: { absolute: COMPANY.name },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: COMPANY.name,
+    url: "/",
+    title: COMPANY.name,
+    description,
+  },
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <a className="skip-link" href="#conteudo">
+        Ir para o conteúdo
+      </a>
+      <SiteHeader message={message} />
+      <main id="conteudo">
+        <section className="hero" aria-labelledby="titulo">
+          <div className="container hero__grid">
+            <div className="hero__copy">
+              <span className="eyebrow">Cidadania e documentação internacional</span>
+              <h1 id="titulo">Citizen Cidadania</h1>
+              <p className="hero__lead">
+                Suporte a pessoas e famílias que precisam organizar processos de
+                cidadania e documentação internacional, a partir da análise de
+                cada caso.
+              </p>
+              <div className="actions">
+                <WhatsAppButton message={message}>Analisar Meu Caso</WhatsAppButton>
+                <WhatsAppButton message={message} className="btn btn--outline">
+                  Falar no WhatsApp
+                </WhatsAppButton>
+              </div>
+            </div>
+            <div className="hero__media">
+              <Media
+                image={{
+                  photo: photos.passaportePortuguesMao,
+                  alt: "Mão segurando um passaporte português diante de azulejos",
+                }}
+                priority
+              />
+            </div>
+          </div>
+        </section>
+        <section className="section" id="servicos" aria-labelledby="servicos-titulo">
+          <div className="container">
+            <header className="section-head">
+              <span className="eyebrow">Serviços</span>
+              <h2 id="servicos-titulo">Escolha o Serviço</h2>
+            </header>
+            <ul className="link-cards">
+              {pages.map((p) => (
+                <li key={pagePath(p)}>
+                  <Link href={pagePath(p)}>
+                    {services[p.service].pageName} em {getCity(p.city)?.name}
+                    <ArrowIcon />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+        <section className="section section--dark" aria-labelledby="sobre-titulo">
+          <div className="container about">
+            <div>
+              <span className="eyebrow">Quem somos</span>
+              <h2 id="sobre-titulo">Como Trabalhamos</h2>
+            </div>
+            <div className="prose">
+              <p>
+                O trabalho começa pela análise de cada situação para orientar o
+                cliente sobre documentação, procedimentos e próximas etapas.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+      <SiteFooter message={message} photos={[photos.passaportePortuguesMao]} />
+      <WhatsAppFloat message={message} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: COMPANY.name,
+          url: SITE_URL,
+          logo: `${SITE_URL}/logo.png`,
+          telephone: COMPANY.telephone,
+        }}
+      />
+    </>
   );
 }

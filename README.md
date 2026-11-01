@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Citizen Cidadania: páginas locais
 
-## Getting Started
+Next.js 16 + Tailwind v4. As páginas são estáticas, e todo o conteúdo vem no HTML.
 
-First, run the development server:
+## Rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Antes de publicar, preencha `NEXT_PUBLIC_SITE_URL` em `.env.local` com o domínio real. Ele define o canonical, o Open Graph, o `sitemap.xml` e o `robots.txt`. A variável `NEXT_PUBLIC_GSC_VERIFICATION` é opcional e guarda o código de verificação do Search Console.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Arquitetura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- URL: `/<serviço>/<cidade>/` (silo: `/<serviço>/` lista as cidades publicadas)
+- `src/data/services.ts`: serviços e o nome usado no H1/Title (`pageName`)
+- `src/data/cities.ts`: catálogo de cidades por região (só vira página com conteúdo)
+- `src/content/<serviço>/<cidade>.ts`: conteúdo e planejamento SEO de cada página
+- `src/content/index.ts`: registro. Uma página só existe (e entra no sitemap) se estiver aqui. O resto devolve 404.
+- Todos os CTAs abrem o WhatsApp `5511991499258` com "Olá! Quero fazer o serviço de <Serviço> em <Cidade>."
 
-## Learn More
+## Nova página
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Copiar `src/content/cidadania-portuguesa/sorocaba.ts` como ponto de partida e reescrever o conteúdo de verdade, sem só trocar a cidade.
+2. Registrar em `src/content/index.ts`.
+3. Atualizar `updated` somente quando o conteúdo mudar de verdade.
