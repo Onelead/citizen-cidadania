@@ -19,7 +19,7 @@ import { OpenAnalysis } from "./OpenAnalysis";
 import "./brand.css";
 
 const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-jakarta",
   display: "swap",

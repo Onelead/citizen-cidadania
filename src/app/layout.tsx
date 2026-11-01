@@ -5,14 +5,14 @@ import "./globals.css";
 
 const display = Unbounded({
   weight: ["500"],
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
 const body = Montserrat({
   weight: ["400", "500", "600"],
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
 });
