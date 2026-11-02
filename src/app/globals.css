@@ -108,7 +108,7 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 .hero { background: var(--c-mist); }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 48px; align-items: end; }
 .hero__copy { padding-block: 32px 96px; }
-.hero__copy h1 { margin-bottom: 20px; }
+.hero__copy h1 { margin-bottom: 20px; line-height: 1.36; }
 .hero__lead { max-width: 52ch; margin-bottom: 32px; color: var(--c-ink-2); font-size: 1.0625rem; }
 .hero__media { align-self: end; padding-top: 32px; }
 .hero .media { aspect-ratio: 1 / 0.86; }
@@ -288,8 +288,8 @@ h3 { font: 600 1.0625rem/1.35 var(--f-body); }
 
 /* Cidade numa caixa (título) */
 .city-box {
-  display: inline; padding: 0.02em 0.22em 0.06em; border-radius: 0.12em;
-  background: var(--c-on-mist); color: var(--c-mist); line-height: 1.1;
+  display: inline; padding: 0.02em 0.2em 0.06em; border-radius: 0.12em;
+  background: var(--c-on-mist); color: var(--c-mist);
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 

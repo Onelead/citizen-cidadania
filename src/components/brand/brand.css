@@ -37,9 +37,11 @@
 }
 .bm-display--md { font-size: clamp(2rem, 3.6vw + 0.6rem, 3.4rem); max-width: 18ch !important; }
 .bm-dot { color: var(--bm-accent); }
+/* Título com a cidade em caixa: mais espaço entre linhas para a caixa não encostar. */
+h1.bm-display { line-height: 1.22; }
 .bm-city-box {
-  display: inline; padding: 0 0.18em 0.04em; border-radius: 0.14em;
-  background: var(--bm-accent); color: var(--bm-on-accent); line-height: 1.05;
+  display: inline; padding: 0 0.16em 0.04em; border-radius: 0.14em;
+  background: var(--bm-accent); color: var(--bm-on-accent);
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 .bm-h3 { font-size: clamp(1.25rem, 1vw + 1rem, 1.6rem); line-height: 1.2; letter-spacing: -0.03em !important; }
