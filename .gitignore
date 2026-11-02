@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 !.env.example
+
+# Cópias de conflito do iCloud (ex.: "arquivo 2.tsx")
+* 2.*
+* 2/
