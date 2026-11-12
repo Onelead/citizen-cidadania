@@ -46,10 +46,12 @@ export const services: Record<ServiceSlug, Service> = {
   },
   "passaporte-americano": {
     slug: "passaporte-americano",
-    name: "Passaporte Americano",
-    pageName: "Passaporte Americano",
+    name: "Passaporte e Visto Americano",
+    // H1 e SEO Title definidos pelo cliente: "Passaporte e Visto Americano em <Cidade>".
+    // A URL continua /passaporte-americano/<cidade>/ para preservar a indexação.
+    pageName: "Passaporte e Visto Americano",
     hubIntro:
-      "A Citizen Cidadania orienta cidadãos americanos sobre documentação, emissão e renovação do passaporte americano, a partir da análise de cada caso. Escolha sua cidade para ver a página correspondente.",
+      "A Citizen Cidadania orienta sobre o passaporte americano, para quem é cidadão dos Estados Unidos, e sobre o visto americano, para quem vai viajar ao país, a partir da análise de cada caso. Escolha sua cidade.",
   },
   aire: {
     slug: "aire",

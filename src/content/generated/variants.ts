@@ -90,21 +90,21 @@ export const variants: Record<ServiceSlug, Variants> = {
 
   "passaporte-americano": {
     meta: [
-      (c) => `Assessoria para Passaporte Americano em ${c}, com orientação sobre documentação, emissão, renovação e etapas relacionadas ao processo.`,
-      (c) => `Passaporte americano em ${c}: orientação para cidadãos americanos sobre primeiro passaporte, renovação, menores e documentos.`,
-      (c) => `Como tirar o passaporte americano em ${c}: assessoria para formulários, comprovação de cidadania, emissão e renovação.`,
-      (c) => `Renovação e emissão de passaporte americano em ${c}, com assessoria para conferir documentos e orientar o agendamento.`,
-      (c) => `Assessoria de passaporte americano em ${c} para cidadãos dos EUA no Brasil: documentação, emissão, renovação e menores.`,
+      (c) => `Assessoria para Passaporte e Visto Americano em ${c}, com orientação sobre documentação, formulários, agendamento, emissão e renovação.`,
+      (c) => `Visto americano e passaporte americano em ${c}: orientação sobre DS-160, taxa, agendamento no consulado e renovação, com a Citizen Cidadania.`,
+      (c) => `Como tirar o visto ou o passaporte americano em ${c}: assessoria para formulários, documentos, agendamento e entrevista no consulado.`,
+      (c) => `Renovação de visto e de passaporte americano em ${c}, com assessoria para conferir documentos, preencher formulários e orientar o agendamento.`,
+      (c) => `Assessoria de visto e passaporte americano em ${c}: análise do caso, documentação e orientação para cada etapa do pedido.`,
     ],
     lead: [
-      () => "É cidadão americano e precisa emitir ou renovar seu passaporte? A Citizen Cidadania auxilia na análise do caso, na documentação e na orientação das próximas etapas.",
-      () => "Tem cidadania americana e mora no Brasil? A Citizen Cidadania orienta sobre formulários, documentos e etapas do passaporte americano.",
-      () => "Precisa do passaporte americano para você ou para um filho? A Citizen Cidadania organiza a documentação e orienta cada etapa.",
+      () => "Precisa do visto para viajar aos Estados Unidos ou do passaporte americano? A Citizen Cidadania auxilia na análise do caso, na documentação e na orientação das próximas etapas.",
+      () => "Vai viajar aos Estados Unidos ou é cidadão americano no Brasil? A Citizen Cidadania orienta sobre formulários, documentos e agendamento.",
+      () => "Primeiro visto, renovação ou passaporte americano: a Citizen Cidadania organiza a documentação e orienta cada etapa do pedido.",
     ],
     ctaTitle: [
-      "Precisa de Ajuda com Seu Passaporte Americano?",
-      "Vamos Organizar Seu Pedido de Passaporte?",
-      "Quer Emitir ou Renovar Seu Passaporte Americano?",
+      "Precisa de Ajuda com Visto ou Passaporte Americano?",
+      "Vamos Organizar Seu Pedido de Visto ou Passaporte?",
+      "Quer Tirar ou Renovar Seu Visto Americano?",
     ],
   },
 
